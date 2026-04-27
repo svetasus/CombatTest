@@ -12,6 +12,19 @@ public class Unit {
 
     public Unit(String name,int maxHp,int attack,int defense,float critMultiplier,float critChance)
     {
+
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Unit name cannot be null or empty");
+        }
+
+        if (maxHp <= 0) throw new IllegalArgumentException("maxHp must be positive");
+        if (attack < 0) throw new IllegalArgumentException("Attack cannot be negative");
+        if (defense < 0) throw new IllegalArgumentException("Defense cannot be negative");
+
+        if (critChance < 0.0f || critChance > 1.0f) {
+            throw new IllegalArgumentException("critChance must be between 0.0 and 1.0");
+        }
+
         this.name=name;
         this.maxHp=maxHp;
         this.hp=maxHp;

@@ -53,4 +53,11 @@ class CombatLogicTest
 
     }
 
+    @Test
+    void testConstructorShouldThrowExceptionForNegativeHp() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Unit("ErrorUnit", -100, 10, 5, 1.5f, 0.2f);
+        }, "Should throw IllegalArgumentException when HP is negative");
+    }
+
 }
